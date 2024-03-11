@@ -1,0 +1,131 @@
+.dashboard{
+  display: flex;
+  gap: 10px;
+  padding: none;
+  width: 1300px;
+  height:738px;
+
+}
+.dashboard--content{
+  background: #fff;
+  flex: 1;
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  gap: 3px;
+  width: 1000px;
+  justify-content: space-between;
+
+  
+}
+.dropdowns button{
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px -2px;
+  display: flex;
+}
+
+.search-box{
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+.search-box input{
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 5px;
+}
+.icons .item .profile-icon{
+  padding: 8px 1px;
+}
+.icons .item{
+  display: flex;
+  color: #000;
+  font-size: 21px;   
+  font-weight: 700;
+  cursor: pointer;
+  gap: 1rem;
+ 
+}
+
+.icons .profile-icon:hover{
+  color: darkgray;
+}
+
+p{
+  padding: 10px;
+  font-size: 20px;
+  font-weight:600;
+  display: flex;
+}
+.dropdown-content{
+  gap: 14px;
+  padding: 25px 0px;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 950px;;
+}
+.dropdowns{
+  color: #000;
+  padding: 12px;
+  display: flex;
+  font-weight: 500;
+  gap: 15px;
+  cursor: pointer;
+
+}
+
+.dropdown-content .buttons{
+  color: #000;
+}
+.dropdown-content .buttons .add-to:hover{
+  color: #3f454e;
+}
+.dropdown-content .buttons .more:hover{
+  color: #3f454e;
+}
+.dropdown-content .to-do{
+  font-weight: 600;
+  background: #e8eef1;
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  border-radius: 8px;
+  height: 528px;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 500;
+    
+}
+.dropdown-content .in-progress{
+  font-weight: 600;
+  background: #e8eef1;
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  border-radius: 8px;
+  height: 528px;
+  gap: 1rem;
+  justify-content: space-between;
+  
+}
+.dropdown-content .done{
+  font-weight: 600;
+  background: #e8eef1;
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  border-radius: 8px;
+  height: 528px;
+  gap: 1rem;
+  justify-content: space-between;
+  
+}
