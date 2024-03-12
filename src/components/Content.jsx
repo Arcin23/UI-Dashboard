@@ -3,7 +3,7 @@ import { BiPlus, BiDotsHorizontalRounded, BiSearch, BiArrowFromTop } from 'react
 
 function Content() {
   const [toggle, setToggle] = useState(true)
-  const [tasks, setTasks] = useState(['sanwa','arcin']);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
   function addTask(){
