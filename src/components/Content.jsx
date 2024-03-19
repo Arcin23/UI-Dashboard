@@ -7,20 +7,22 @@ function Content() {
   const [newTask, setNewTask] = useState("");
 
   function addTask(){
-    if (newTask !== ''){
+    return ( if (newTask !== ''){
       setTasks(t => [...t, newTask]);
       setNewTask("");
     }else{
        alert('Enter something');
     }
+    )
   
   }
 
   function dropDown(){
-    <div>
+    return(<div>
       <input type='text' className='input-box' placeholder='enter activity' value={newTask}/>
       <button onClick={addTask} className='add-button'>Add</button>
     </div>
+          )
   }
   
   
