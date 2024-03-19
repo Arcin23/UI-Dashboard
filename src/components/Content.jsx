@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { BiPlus, BiDotsHorizontalRounded, BiSearch, BiArrowFromTop } from 'react-icons/bi';
 
 function Content() {
-  const [toggle, setToggle] = useState(true)
-  const [tasks, setTasks] = useState([]);
+  const [toggle, setToggle] = useState(false)
+  const [showMore, setShowMore] = useState(false)
   const [newTask, setNewTask] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  const [inputText, setInputText] = useState('');
+  const [savedText, setSavedText] = useState('');
 
   function addTask(){
-    return ( if (newTask !== ''){
+    if(newTask !== ''){
       setTasks(t => [...t, newTask]);
       setNewTask("");
     }else{
-       alert('Enter something');
+      alert('Enter something');
     }
-    )
   
   }
 
@@ -22,13 +24,19 @@ function Content() {
       <input type='text' className='input-box' placeholder='enter activity' value={newTask}/>
       <button onClick={addTask} className='add-button'>Add</button>
     </div>
-          )
+    );
   }
-  
-  
 
- 
+  function handleSubmit(event) {
+    event.preventDefault();
+    setSavedText(inputText);
+    setInputText('');
+    setShowInput(false);
+  };
 
+  function handleInputChange(event) {
+    setInputText(event.target.value);
+  };
 
 
   return (
@@ -40,28 +48,58 @@ function Content() {
       <p>Dashboard</p>
        
       <div className='dropdowns'>
-        <button onClick={()=>setToggle(!toggle)} className='drop-button' style={{maxHeight:'15px', overflowY:'auto'}}>This week<BiArrowFromTop/></button>    
+        <button onClick={()=>setToggle(!toggle)} className='drop-button' style={{maxHeight:'15px',padding:'10px' , maxWidth:'5px', overflowY:'auto'}}>This week<BiArrowFromTop/></button>    
         {toggle && (
           <div className="dropdown-content">
             <div className='to-do'>
               To do
               <a href='' className='buttons'>
-                <BiPlus onClick={dropDown} className='add-to'/>
+                <BiPlus onClick={handlePlusClick} className='add-to'/>
+                {showInput && (
+                  <form onSubmit={handleSubmit}>
+                    <input type="text" value={inputText} onChange={handleInputChange} />
+                    <button type="submit">Save</button>
+                  </form>
+                )}
                 <BiDotsHorizontalRounded className='more'/>
               </a>
             </div>
           <div className='in-progress'>
             In progress
             <a href='' className='buttons'>
-              <BiPlus onClick={dropDown} className='add-to'/>
-              <BiDotsHorizontalRounded className='more'/>
+              <BiPlus onClick={() => setShowInput(!showInput)} className='add-to'/>
+              {showInput && (
+                <form onSubmit={handleSubmit}>
+                    <input type="text" value={inputText} onChange={handleInputChange} />
+                    <button type="submit">Save</button>
+                </form>
+              )}
+              
+              <BiDotsHorizontalRounded onClick={() => setShowInput(!showInput)} className='more'/>
+               {toggle && 
+                <ul>
+                  <li onClick={deleteTask}>Delete</li>
+                <ul/>
+              }
             </a>
           </div>
           <div className='done'>
             Done
             <a href='' className='buttons'>
-              <BiPlus onClick={dropDown} className='add-to'/>
-              <BiDotsHorizontalRounded className='more'/>   
+              <BiPlus onClick={() => setShowInput(!showInput)} className='add-to'/>
+              {showInput && (
+                <form onSubmit={handleSubmit}>
+                    <input type="text" value={inputText} onChange={handleInputChange} />
+                    <button type="submit">Save</button>
+                </form>
+              )}
+              <BiDotsHorizontalRounded onClick={handleMoreClick} className='more'/> 
+              {toggle && 
+                <ul>
+                  <li onClick={deleteTask}>Delete</li>
+                <ul/>
+              }
+              
             </a>
           </div>
           </div>
@@ -70,6 +108,6 @@ function Content() {
       </div>
   );
 }
-
+                
 export default Content;
 
