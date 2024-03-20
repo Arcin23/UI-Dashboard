@@ -3,7 +3,6 @@ import { BiPlus, BiDotsHorizontalRounded, BiSearch, BiArrowFromTop } from 'react
 
 function Content() {
   const [toggle, setToggle] = useState(false)
-  const [showMore, setShowMore] = useState(false)
   const [newTask, setNewTask] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [inputText, setInputText] = useState('');
@@ -16,15 +15,6 @@ function Content() {
     }else{
       alert('Enter something');
     }
-  
-  }
-
-  function dropDown(){
-    return(<div>
-      <input type='text' className='input-box' placeholder='enter activity' value={newTask}/>
-      <button onClick={addTask} className='add-button'>Add</button>
-    </div>
-    );
   }
 
   function handleSubmit(event) {
@@ -32,12 +22,11 @@ function Content() {
     setSavedText(inputText);
     setInputText('');
     setShowInput(false);
-  };
+  }
 
   function handleInputChange(event) {
     setInputText(event.target.value);
-  };
-
+  }
 
   return (
     <div className='Dashboard-display'>
@@ -48,17 +37,17 @@ function Content() {
       <p>Dashboard</p>
        
       <div className='dropdowns'>
-        <button onClick={()=>setToggle(!toggle)} className='drop-button' style={{maxHeight:'15px',padding:'10px' , maxWidth:'5px', overflowY:'auto'}}>This week<BiArrowFromTop/></button>    
+        <button onClick={()=>setToggle(!toggle)} className='drop-button' style={{maxHeight:'50px',padding:'10px' , maxWidth:'500px', overflowY:'auto'}}>This week<BiArrowFromTop/></button>    
         {toggle && (
           <div className="dropdown-content">
             <div className='to-do'>
               To do
               <a href='' className='buttons'>
-                <BiPlus onClick={handlePlusClick} className='add-to'/>
+                <BiPlus onClick={()=>setInputText(!showInput)} className='add-to'/>
                 {showInput && (
                   <form onSubmit={handleSubmit}>
                     <input type="text" value={inputText} onChange={handleInputChange} />
-                    <button type="submit">Save</button>
+                    <button onClick={addTask} type="submit">Save</button>
                   </form>
                 )}
                 <BiDotsHorizontalRounded className='more'/>
@@ -67,45 +56,33 @@ function Content() {
           <div className='in-progress'>
             In progress
             <a href='' className='buttons'>
-              <BiPlus onClick={() => setShowInput(!showInput)} className='add-to'/>
+              <BiPlus onClick={()=>setInputText(!showInput)} className='add-to'/>
               {showInput && (
-                <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <input type="text" value={inputText} onChange={handleInputChange} />
-                    <button type="submit">Save</button>
-                </form>
+                    <button onClick={addTask} type="submit">Save</button>
+                  </form>
               )}
-              
-              <BiDotsHorizontalRounded onClick={() => setShowInput(!showInput)} className='more'/>
-               {toggle && 
-                <ul>
-                  <li onClick={deleteTask}>Delete</li>
-                <ul/>
-              }
+              <BiDotsHorizontalRounded className='more'/>
             </a>
           </div>
           <div className='done'>
             Done
             <a href='' className='buttons'>
-              <BiPlus onClick={() => setShowInput(!showInput)} className='add-to'/>
+              <BiPlus onClick={()=>setInputText(!showInput)} className='add-to'/>
               {showInput && (
-                <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit}>
                     <input type="text" value={inputText} onChange={handleInputChange} />
-                    <button type="submit">Save</button>
-                </form>
+                    <button onClick={addTask} type="submit">Save</button>
+                  </form>
               )}
-              <BiDotsHorizontalRounded onClick={handleMoreClick} className='more'/> 
-              {toggle && 
-                <ul>
-                  <li onClick={deleteTask}>Delete</li>
-                <ul/>
-              }
-              
+              <BiDotsHorizontalRounded className='more'/>   
             </a>
           </div>
-          </div>
-        )}
         </div>
+        )}
       </div>
+    </div>
   );
 }
                 
