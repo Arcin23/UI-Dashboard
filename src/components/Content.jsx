@@ -28,6 +28,14 @@ function Content() {
     setInputText(event.target.value);
   }
 
+  function saveData() {
+   
+  }
+
+  function deleteTask() {
+   
+  } 
+  
   return (
     <div className='Dashboard-display'>
       <div className="search-box">
@@ -51,6 +59,12 @@ function Content() {
                   </form>
                 )}
                 <BiDotsHorizontalRounded className='more'/>
+               {showInput && (
+                  <form onSubmit={handleSubmit}>
+                    <input type="text" value={inputText} onChange={handleInputChange} />
+                    <button onClick={addTask} type="submit">Save</button>
+                  </form>
+                )}
               </a>
             </div>
           <div className='in-progress'>
@@ -58,12 +72,18 @@ function Content() {
             <a href='' className='buttons'>
               <BiPlus onClick={()=>setInputText(!showInput)} className='add-to'/>
               {showInput && (
-                  <form onSubmit={handleSubmit}>
-                    <input type="text" value={inputText} onChange={handleInputChange} />
-                    <button onClick={addTask} type="submit">Save</button>
-                  </form>
+                 <form onSubmit={handleSubmit}>
+                   <input type="text" value={inputText} onChange={handleInputChange} />
+                   <button onClick={addTask} type="submit">Save</button>
+                 </form>
               )}
               <BiDotsHorizontalRounded className='more'/>
+              {showInput && (
+                 <form onSubmit={handleSubmit}>
+                   <input type="text" value={inputText} onChange={handleInputChange} />
+                   <button onClick={addTask} type="submit">Save</button>
+                 </form>
+              )}
             </a>
           </div>
           <div className='done'>
@@ -71,12 +91,15 @@ function Content() {
             <a href='' className='buttons'>
               <BiPlus onClick={()=>setInputText(!showInput)} className='add-to'/>
               {showInput && (
-                  <form onSubmit={handleSubmit}>
-                    <input type="text" value={inputText} onChange={handleInputChange} />
-                    <button onClick={addTask} type="submit">Save</button>
-                  </form>
+                <form onSubmit={handleSubmit}>
+                  <input type="text" value={inputText} onChange={handleInputChange} />
+                  <button onClick={addTask} type="submit">Save</button>
+                </form>
               )}
-              <BiDotsHorizontalRounded className='more'/>   
+              <BiDotsHorizontalRounded className='more'/>
+              {showInput && (
+                 <button class>Delete<button/>
+               )}
             </a>
           </div>
         </div>
