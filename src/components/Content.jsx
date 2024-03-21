@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { BiPlus, BiDotsHorizontalRounded, BiSearch, BiArrowFromTop } from 'react-icons/bi';
 
 function Content() {
